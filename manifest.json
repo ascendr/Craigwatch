@@ -1,0 +1,31 @@
+{
+  "manifest_version": 2,
+
+  "name": "CraigWatch",
+  "description": "This extension will watch craigslist for criteria you choose",
+  "version": "1.0",
+  "icons": { 
+    "128": "128activeeye.png"
+  },
+  "background": {
+    "scripts" : ["background.js"]
+  },
+  "content_scripts":[
+    { 
+      "matches" : ["https://*.craigslist.org/*"],
+      "js" : ["craigwatch.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "browser_action": {
+   "default_tile": "craigwatch"
+  },
+  "permissions": [
+   "tabs",
+   "storage",
+   "https://*.craigslist.org/*"
+   ],
+  "externally_connectable": {
+    "matches": ["https://*.craigslist.org/*"]
+  }
+}
